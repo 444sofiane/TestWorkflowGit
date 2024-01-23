@@ -48,24 +48,29 @@ jobs:
         env:
           DISCORD_CHANNEL_ID: "1199353991922983134"
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-  
-  linter:
-    runs-on: ubuntu-latest
-
-    steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v2.5.0
-          with:
-            fetch-depth: 0
         
-        - name: Set up Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: '16'
+  deploy_to_s3:
+            runs-on: ubuntu-latest
+          
+            steps:
+              - name: Checkout Repository
+                uses: actions/checkout@v2.5.0
+                with:
+                  fetch-depth: 0
+          
+              - name: Set up AWS CLI
+                uses: aws-actions/configure-aws-credentials@v1
+                with:
+                  aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: 'eu-north-1'
+                env:
+                    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
+              - name: Deploy to AWS S3
+                run: aws s3 sync ./dist s3://saof20122003bucket
+            
+          
         
-        - name: Install Dependencies
-          run: npm install
-        
-        - name: Run Linter
-          run: npx lint-staged
       
