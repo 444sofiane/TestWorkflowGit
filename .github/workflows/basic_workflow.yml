@@ -38,7 +38,7 @@ jobs:
         
       - name: Notify on Failure
         if: failure()
-        uses: Ilshidur/action-discord@v2
+        uses: Ilshidur/action-discord@master
         with:
           status: ${{ job.status }}
           text: "The tests in the 'advanced' job failed. Check the workflow for details."
