@@ -1,0 +1,16 @@
+{
+    "name": "my-node-project",
+    "version": "1.0.0",
+    "description": "A sample Node.js project for GitHub Actions",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo 'Running tests...'" 
+    },
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "keywords": [],
+    "author": "Sofiane SAOU",
+    "license": "MIT"
+  }
+  
