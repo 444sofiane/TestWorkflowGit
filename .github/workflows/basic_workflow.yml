@@ -3,7 +3,7 @@ name: Basic Workflow
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.5.0  # Specify the latest version
+        with:
+          fetch-depth: 0  # Fetch all history for proper version calculation
 
       - name: Print Hello World
         run: echo "Hello, World!"
