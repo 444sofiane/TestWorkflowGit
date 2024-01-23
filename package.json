@@ -4,7 +4,7 @@
     "description": "A sample Node.js project for GitHub Actions",
     "main": "index.js",
     "scripts": {
-      "test": "echo 'Running tests...'" 
+      "test": "node test.js" 
     },
     "dependencies": {
         "express": "^4.17.1"
