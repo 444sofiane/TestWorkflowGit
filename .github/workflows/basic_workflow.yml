@@ -37,3 +37,13 @@ jobs:
 
       - name: Run Tests
         run: npm test
+        
+      - name: Notify on Failure
+        if: failure()
+        uses: rtCamp/action-slack@v5
+        with:
+          status: ${{ job.status }}
+          text: "The tests in the 'advanced' job failed. Check the workflow for details."
+          color: danger
+          mentions: "channel"
+          slack_url: ${{ secrets.SLACK_WEBHOOK_URL }}
