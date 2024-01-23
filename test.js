@@ -1,4 +1,4 @@
-const _ = require('express');
+const _ = require('lodash');
 
-const app = _();
-console.log('_.version', _.version);
+//get the version of lodash
+console.log(_.VERSION);
