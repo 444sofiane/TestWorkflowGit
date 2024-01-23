@@ -46,9 +46,9 @@ jobs:
             text: "The tests in the 'advanced' job failed. Check the workflow for details."
             author_name: "Notifying Bot"
             mention: "channel"
-            slack_bot_token: ${{ env.SLACK_BOT_TOKEN }}
-            slack_channel: ${{ env.SLACK_CHANNEL }}
+            slack_discord_url: ${{ env.DISCORD_WEBHOOK_URL }}
         env:
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
             SLACK_CHANNEL: "#gitactions-notifying"
             SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
