@@ -45,5 +45,5 @@ jobs:
           channel: ${{ env.DISCORD_CHANNEL_ID }}
         env:
           DISCORD_CHANNEL_ID: "1199353991922983134"
-          DISCORD_TOKEN: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
       
