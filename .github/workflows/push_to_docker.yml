@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-    additional_job_docker_build_push:
+    push_to_docker:
         runs-on: ubuntu-latest
       
         steps:

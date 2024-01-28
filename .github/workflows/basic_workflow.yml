@@ -1,4 +1,4 @@
-name: Advanced Workflow
+name: basic workflow
 
 on:
   push:
@@ -17,7 +17,3 @@ jobs:
 
       - name: Print Hello World
         run: echo "Hello, World!"
-        
-                
-        
-      
