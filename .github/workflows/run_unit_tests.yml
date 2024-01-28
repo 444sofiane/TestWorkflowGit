@@ -1,0 +1,19 @@
+name: run_unit_tests
+
+on:
+  push:
+    branches: master
+
+jobs:
+    run_unit_tests:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Install Criterion
+          run: bash install_criterion.sh
+        
+        - name: Build
+          run: gcc -o tests_bin tests/tests.c -lcriterion && ./tests_bin
+
+    
+    
