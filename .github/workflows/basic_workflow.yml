@@ -70,7 +70,28 @@ jobs:
           
               - name: Deploy to AWS S3
                 run: aws s3 sync ./dist s3://saof20122003bucket
-            
-          
+
+  additional_job_docker_build_push:
+                  runs-on: ubuntu-latest
+                
+                  steps:
+                    - name: Checkout Repository
+                      uses: actions/checkout@v2.5.0
+                      with:
+                        fetch-depth: 0
+                
+                    - name: Set up Docker
+                      uses: docker/setup-buildx-action@v1
+                
+                    - name: Build and Push Docker Image
+                      run: |
+                        docker build -t gitactions .
+                        docker tag gitactions gittest/gitactions:latest
+                        echo "${{ env.DOCKER_PASSWORD }}" | docker login -u "${{ env.DOCKER_USERNAME }}" --password-stdin
+                        docker push gittest/gitactions:latest
+                      env:
+                        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+                        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+                
         
       
