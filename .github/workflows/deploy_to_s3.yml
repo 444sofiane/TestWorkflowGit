@@ -18,8 +18,8 @@ jobs:
           - name: Set up AWS CLI
             uses: aws-actions/configure-aws-credentials@v1
             with:
-              aws-access-key-id: "AKIAQTVBFA4455PWXHOA"
-              aws-secret-access-key: "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"
+              aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
               aws-region: 'eu-north-1'
             env:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
