@@ -1,5 +1,5 @@
 // test_my_program.c
-#include "../lib/criterion/include/criterion/criterion.h"
+#include <criterion/criterion.h>
 #include "../src/my_program.c"
 
 //generate a test for my_add function
