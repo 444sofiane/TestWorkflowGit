@@ -4,13 +4,16 @@
     "description": "A sample Node.js project for GitHub Actions",
     "main": "index.js",
     "scripts": {
-      "test": "node test.js" 
+        "test": "node test.js"
     },
     "dependencies": {
-        "lodash": "^4.17.1"
+        "lodash": "^4.17.1",
+        "eslint": "^8.56.0"
     },
     "keywords": [],
     "author": "Sofiane SAOU",
-    "license": "MIT"
-  }
-  
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^8.56.0"
+    }
+}
