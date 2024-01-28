@@ -10,7 +10,7 @@ jobs:
 
         steps:
         - name: Install Criterion
-          run: sudo apt-get install -y libcr0 libcr-dev
+          run: sudo apt-get install -y libcriterion-dev
         
         - name: Build
           run: gcc -o tests_bin tests/tests.c -lcriterion && ./tests_bin
