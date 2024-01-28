@@ -91,9 +91,9 @@ jobs:
 
                     - name: Build and Push Docker Image
                       run: |
-                        docker build -t gitactions .
-                        docker tag gitactions gittest/gitactions:latest
-                        docker push gittest/gitactions:latest
+                        docker build -t gittest .
+                        docker tag gittest 444sofiane/gittest:latest
+                        docker push 444sofiane/gittest:latest
                 
         
       
