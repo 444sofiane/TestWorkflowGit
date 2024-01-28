@@ -1,0 +1,29 @@
+name: deploy_to_s3
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    deploy_to_s3:
+        runs-on: ubuntu-latest
+      
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v2.5.0
+            with:
+              fetch-depth: 0
+      
+          - name: Set up AWS CLI
+            uses: aws-actions/configure-aws-credentials@v1
+            with:
+              aws-access-key-id: "AKIAQTVBFA4455PWXHOA"
+              aws-secret-access-key: "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"
+              aws-region: 'eu-north-1'
+            env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      
+          - name: Deploy to AWS S3
+            run: aws s3 sync ./dist s3://saof20122003bucket

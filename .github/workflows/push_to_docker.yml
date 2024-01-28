@@ -1,0 +1,30 @@
+name: push_to_docker
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    additional_job_docker_build_push:
+        runs-on: ubuntu-latest
+      
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v2.5.0
+            with:
+              fetch-depth: 0
+      
+          - name: Set up Docker
+            uses: docker/setup-buildx-action@v1
+
+          - name: Log in to Docker
+            run: echo "${{ env.DOCKER_PASSWORD }}" | docker login -u "${{ env.DOCKER_USERNAME }}" --password-stdin
+            env:
+                DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+                DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+          - name: Build and Push Docker Image
+            run: |
+              docker build -t gittest .
+              docker tag gittest 444sofiane/gittest:latest
+              docker push 444sofiane/gittest:latest

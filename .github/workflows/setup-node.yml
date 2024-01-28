@@ -1,0 +1,38 @@
+name: node_actions
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    setup-node:
+        runs-on: ubuntu-latest
+    
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v2.5.0
+            with:
+              fetch-depth: 0
+    
+          - name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '16'
+    
+          - name: Install Dependencies
+            run: npm install
+    
+          - name: Run Tests
+            run: npm test
+            
+          - name: Notify on Failure
+            if: failure()
+            uses: Ilshidur/action-discord@master
+            with:
+              status: ${{ job.status }}
+              text: "The tests in the 'advanced' job failed. Check the workflow for details."
+              channel: ${{ env.DISCORD_CHANNEL_ID }}
+            env:
+              DISCORD_CHANNEL_ID: "1199353991922983134"
+              DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
